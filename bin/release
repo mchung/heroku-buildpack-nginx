@@ -3,7 +3,6 @@
 
 cat <<EOF
 ---
-
 addons:
   - cleardb:ignite
   - sendgrid:starter
