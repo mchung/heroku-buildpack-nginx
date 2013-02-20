@@ -57,6 +57,7 @@ cat >>bin/start.sh <<EOF
 
 echo "Starting nginx"
 
+bundle install --deployment
 mkdir /app/tmp && chmod 777 /app/tmp
 mkdir /app/log
 cd public
