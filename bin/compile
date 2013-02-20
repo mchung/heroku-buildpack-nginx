@@ -44,12 +44,12 @@ if [ ! -d ./vendor/nginx ]; then
   curl --silent --max-time 60 --location $NGINX_URL | tar xz
 fi
 
+mkdir /app/gems
 gem install bundler
 
 echo "-----> Writing start.sh script"
 mkdir -p ${BUILD_DIR}/bin
 cd ${BUILD_DIR}
-
 
 # Startup
 cat >>bin/start.sh <<EOF
