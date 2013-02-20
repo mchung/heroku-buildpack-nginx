@@ -44,8 +44,6 @@ if [ ! -d ./vendor/nginx ]; then
   curl --silent --max-time 60 --location $NGINX_URL | tar xz
 fi
 
-mkdir /app/vendor/gems
-gem install bundler
 
 echo "-----> Writing start.sh script"
 mkdir -p ${BUILD_DIR}/bin
@@ -57,6 +55,8 @@ cat >>bin/start.sh <<EOF
 
 echo "Starting nginx"
 
+mkdir /app/vendor/gems
+gem install bundler
 bundle install --deployment
 mkdir /app/tmp && chmod 777 /app/tmp
 mkdir /app/log
