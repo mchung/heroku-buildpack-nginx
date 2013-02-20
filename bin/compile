@@ -57,6 +57,7 @@ echo "Starting nginx"
 
 mkdir /app/vendor/gems
 gem install bundler
+cd public
 bundle install --deployment
 mkdir /app/tmp && chmod 777 /app/tmp
 mkdir /app/log
