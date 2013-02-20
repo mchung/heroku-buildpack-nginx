@@ -55,13 +55,13 @@ cat >>bin/start.sh <<EOF
 
 echo "Starting nginx"
 
+cp -rf /app/config/* /app
 mkdir /app/vendor/gems
 gem install bundler
 cd public
 bundle install --deployment
 mkdir /app/tmp && chmod 777 /app/tmp
 mkdir /app/log
-cd public
 ruby websocket.rb -S unix.socket -svd -l /app/log/websocket.log
 (tail -qF -n 0 /app/log/*.log &)
 nginx
