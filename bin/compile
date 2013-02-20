@@ -44,6 +44,8 @@ if [ ! -d ./vendor/nginx ]; then
   curl --silent --max-time 60 --location $NGINX_URL | tar xz
 fi
 
+gem install bundler
+
 echo "-----> Writing start.sh script"
 mkdir -p ${BUILD_DIR}/bin
 cd ${BUILD_DIR}
@@ -55,7 +57,7 @@ cat >>bin/start.sh <<EOF
 
 echo "Starting nginx"
 
-chmod 777 /app/tmp
+mkdir /app/tmp && chmod 777 /app/tmp
 mkdir /app/log
 cd public
 ruby websocket.rb -S unix.socket -svd -l /app/log/websocket.log
